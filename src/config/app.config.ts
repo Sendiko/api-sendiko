@@ -3,18 +3,21 @@ import cors from 'cors'
 import path from 'path'
 import helmet from 'helmet'
 import requestIp from 'request-ip'
-import Route from '../routes/route'
+import Route from '@/routes/route'
 import compression from 'compression'
 import cookieParser from 'cookie-parser'
 import userAgent from 'express-useragent'
-import { currentDir } from '../lib/string'
+import { currentDir } from '@/lib/string'
 import { httpLogger } from './httplogger.config'
-import { ErrorResponse } from '../lib/http/ErrorResponse'
-import { allowedCors } from '@/src/lib/constant/allowedCors'
-import expressUserAgent from '../middleware/expressUserAgent'
-import expressRateLimit from '../middleware/expressRateLimit'
-import expressWithState from '../middleware/expressWithState'
+import { ErrorResponse } from '@/lib/http/ErrorResponse'
+import { allowedCors } from '@/lib/constant/allowedCors'
+import expressUserAgent from '@/middleware/expressUserAgent'
+import expressRateLimit from '@/middleware/expressRateLimit'
+import expressWithState from '@/middleware/expressWithState'
+import expressErrorHandle from '@/middleware/expressErrorHandler'
 import express, { Application, Request, Response } from 'express'
+import expressErrorValidation from '@/middleware/expresZodHandler'
+import expressErrorSequelize from '@/middleware/expressSequelizeHandler'
 
 export class App {
   private _app: Application
@@ -47,7 +50,7 @@ export class App {
     this._app.use(Route)
 
     // Catch error 404 endpoint not found
-    this._app.use('*', (req: Request, _res: Response) => {
+    this._app.all('/{*any}', (req: Request, _res: Response) => {
       const method = req.method
       const url = req.originalUrl
       const host = req.hostname
@@ -61,13 +64,10 @@ export class App {
   }
 
   public get create() {
-    // @ts-expect-error
     this._app.use(expressErrorValidation)
 
-    // @ts-expect-error
     this._app.use(expressErrorSequelize)
 
-    // @ts-expect-error
     this._app.use(expressErrorHandle)
 
     return this._app
