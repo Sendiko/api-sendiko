@@ -7,24 +7,24 @@ export async function up(
   queryInterface: QueryInterface,
   Sequelize: typeof DataTypes
 ) {
-  await queryInterface.createTable('project', {
+  await queryInterface.createTable('contactme', {
     id: {
       allowNull: false,
       primaryKey: true,
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
     },
-    title: {
+    senderAddress: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
+    subject: {
       allowNull: false,
       type: Sequelize.STRING,
     },
     description: {
       allowNull: false,
       type: Sequelize.TEXT,
-    },
-    imagePreview: {
-      allowNull: false,
-      type: Sequelize.STRING,
     },
     createdAt: {
       allowNull: false,
@@ -43,5 +43,5 @@ export async function down(
   queryInterface: QueryInterface,
   Sequelize: typeof DataTypes
 ) {
-  await queryInterface.dropTable('project')
+  await queryInterface.dropTable('contactme')
 }

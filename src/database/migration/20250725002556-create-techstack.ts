@@ -20,7 +20,7 @@ export async function up(
     },
     description: {
       allowNull: false,
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
     },
     icon: {
       allowNull: false,
