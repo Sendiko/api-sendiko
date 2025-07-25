@@ -20,4 +20,9 @@ export const env = {
 
   JWT_SECRET: process.env.JWT_SECRET || 'your_secret_key',
   JWT_EXPIRES: process.env.JWT_EXPIRES || '7d',
+
+  MAIL_SERVICE: process.env.MAIL_SERVICE || 'gmail',
+  MAIL_USER: process.env.MAIL_USER || 'youremail@example.com',
+  MAIL_PASSWORD: process.env.MAIL_PASSWORD || 'apppassword',
+  MAIL_RECEIVER: process.env.MAIL_RECEIVER || 'receiver',
 }
