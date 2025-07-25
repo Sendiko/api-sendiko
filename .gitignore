@@ -3,3 +3,4 @@
 /public/uploads/
 /dist
 package-lock.json
+/logs
