@@ -19,6 +19,7 @@
 			"@/routes/*" : ["./src/routes/*"],
 			"@/middleware/*" : ["./src/middleware/*"],
 			"@/database/*" : ["./src/database/*"],
+			"@/helper/*" : ["./src/helper/*"],
 		},
     "typeRoots": [
       "./node_modules/@types",
