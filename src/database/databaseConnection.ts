@@ -15,7 +15,7 @@ const sequelizeOptions: SequelizeOptions = {
   database: env.SEQUELIZE_DATABASE,
   logQueryParameters: env.SEQUELIZE_LOGGING,
   timezone: env.SEQUELIZE_TIMEZONE,
-  models: [`${__dirname}/entity`],
+  models: [`${__dirname}/model`],
 }
 
 const sequelize = new Sequelize({ ...sequelizeOptions })
