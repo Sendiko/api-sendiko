@@ -16,8 +16,7 @@
     "generate:secret": "node dist/helper/keyGenerate.js",
     "build": "rimraf dist && tsc && tsc-alias",
     "start": "node dist/main.js",
-    "watch-dev": "node --import=tsx --watch src/main.ts",
-    "build:watch": "tsc && (concurrently \"tsc -w\" \"tsc-alias -w\")"
+    "watch:dev": "node --import=tsx --watch src/main.ts"
   },
   "dependencies": {
     "argon2": "^0.43.1",
