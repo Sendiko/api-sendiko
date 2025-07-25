@@ -24,7 +24,7 @@ const setFileToBody = asyncHandler(
 
 route.post(
   '/techstack',
-  authorization,
+  authorization(),
   uploadFile,
   setFileToBody,
   asyncHandler(async (req: Request, res: Response) => {
@@ -78,7 +78,7 @@ route.get(
 
 route.put(
   '/techstack/:id',
-  // authorization,
+  authorization(),
   uploadFile,
   setFileToBody,
   asyncHandler(async (req: Request, res: Response) => {
