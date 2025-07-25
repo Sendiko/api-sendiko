@@ -16,7 +16,7 @@ import expressRateLimit from '@/middleware/expressRateLimit'
 import expressWithState from '@/middleware/expressWithState'
 import expressErrorHandle from '@/middleware/expressErrorHandler'
 import express, { Application, Request, Response } from 'express'
-import expressErrorValidation from '@/middleware/expresYupHandler'
+import expressErrorValidation from '@/middleware/expressYupHandler'
 import expressErrorSequelize from '@/middleware/expressSequelizeHandler'
 
 export class App {
