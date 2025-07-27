@@ -34,7 +34,7 @@ route.post(
 
     const data = await service.add({
       ...values,
-      icon: `${icon.destination}/${icon.filename}`,
+      icon: `${icon.destination.split('/')[1]}/${icon.filename}`,
     })
 
     const httpResponse = HttpResponse.created({
@@ -90,7 +90,7 @@ route.put(
 
     const data = await service.update(id, {
       ...values,
-      icon: `${icon.destination}/${icon.filename}`,
+      icon: `${icon.destination.split('/')[1]}/${icon.filename}`,
     })
 
     const httpResponse = HttpResponse.updated({
