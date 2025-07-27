@@ -10,7 +10,6 @@ import userAgent from 'express-useragent'
 import { currentDir } from '@/lib/string'
 import { httpLogger } from './httplogger.config'
 import { ErrorResponse } from '@/lib/http/ErrorResponse'
-import { allowedCors } from '@/lib/constant/allowedCors'
 import expressUserAgent from '@/middleware/expressUserAgent'
 import expressRateLimit from '@/middleware/expressRateLimit'
 import expressWithState from '@/middleware/expressWithState'
@@ -18,6 +17,7 @@ import expressErrorHandle from '@/middleware/expressErrorHandler'
 import express, { Application, Request, Response } from 'express'
 import expressErrorValidation from '@/middleware/expressYupHandler'
 import expressErrorSequelize from '@/middleware/expressSequelizeHandler'
+import { optCors } from '../helper/optCors'
 
 export class App {
   private _app: Application
@@ -35,8 +35,8 @@ export class App {
     this._app.use(express.static(path.resolve(`${currentDir}/public`)))
     this._app.use(compression())
     this._app.use(cookieParser())
+    this._app.use(cors(optCors))
     this._app.use(helmet())
-    this._app.use(cors({ origin: allowedCors }))
     this._app.use(hpp())
     this._app.use(requestIp.mw())
     this._app.use(userAgent.express())
