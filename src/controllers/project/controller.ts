@@ -36,7 +36,9 @@ route.post(
     const data = await service.add({
       ...values,
       techStacks: ParseStringToArray(values.techStacks),
-      imagePreview: `${imagePreview.destination}/${imagePreview.filename}`,
+      imagePreview: `${imagePreview.destination.split('/')[1]}/${
+        imagePreview.filename
+      }`,
     })
 
     const httpResponse = HttpResponse.created({
@@ -93,7 +95,9 @@ route.put(
     const data = await service.update(id, {
       ...values,
       techStacks: ParseStringToArray(values.techStacks),
-      imagePreview: `${imagePreview.destination}/${imagePreview.filename}`,
+      imagePreview: `${imagePreview.destination.split('/')[1]}/${
+        imagePreview.filename
+      }`,
     })
 
     const httpResponse = HttpResponse.updated({
