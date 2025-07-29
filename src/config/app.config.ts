@@ -32,7 +32,7 @@ export class App {
     this._app.use(httpLogger)
     this._app.use(express.json({ limit: '20mb', type: 'application/json' }))
     this._app.use(express.urlencoded({ extended: true }))
-    this._app.use(express.static(path.resolve(`${currentDir}/public`)))
+    this._app.use(express.static(path.join(__dirname, '../../public')))
     this._app.use(compression())
     this._app.use(cookieParser())
     this._app.use(cors(optCors))
