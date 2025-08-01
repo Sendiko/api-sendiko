@@ -35,13 +35,8 @@ export class App {
     this._app.use(express.static(path.join(__dirname, '../../public')))
     this._app.use(compression())
     this._app.use(cookieParser())
-    this._app.use(
-      helmet({
-        crossOriginEmbedderPolicy: false,
-        crossOriginResourcePolicy: false, 
-      })
-    )
     this._app.use(cors(optCors))
+    this._app.use(helmet())
     this._app.use(hpp())
     this._app.use(requestIp.mw())
     this._app.use(userAgent.express())
