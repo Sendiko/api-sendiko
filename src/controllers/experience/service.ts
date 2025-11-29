@@ -25,7 +25,9 @@ export class ExperienceService {
   }
 
   async getAll(): Promise<Experience[]> {
-    const data = await Experience.findAll()
+    const data = await Experience.findAll({
+      order: [['periodeStart', 'DESC']],
+    })
 
     return data
   }
